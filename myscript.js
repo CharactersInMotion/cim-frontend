@@ -35,7 +35,7 @@ function Countdown(time){
         }
     },1000);
 }
-Countdown(1);
+Countdown(20);
 
 function Setscore(value){
     document.getElementById("Score").innerText = value;
