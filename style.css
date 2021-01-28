@@ -1,8 +1,16 @@
 @font-face {
-  font-family: Hagrid-text;
-  src: url('../fonts/Hagrid-Text-Variable-trial.ttf') format('truetype');
-  font-weight: bold;
-  font-style: sans-serif;
+  font-family: Typofont;
+  src: url(..//fonts/Hagrid-Text-Variable-trial.ttf);
+}
+
+body {
+  background-attachment: fixed;
+  font-family: 'Typofont', Courier, monospace;
+  font-size: 20px;
+  line-height: 1.0;
+  margin: 0 auto;
+  min-width: 700px;
+  max-width: 1400px;
 }
 
 .slidecontainer {
