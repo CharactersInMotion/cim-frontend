@@ -3,12 +3,11 @@
 
 var canvas = document.getElementById("canvas");
 var context = canvas.getContext("2d");
-context.font = "20px "
-var img = new Image();
-img.setAttribute("src","Mama.jpeg");
-context.beginPath();
-context.arc(100,75,50,0,2*Math.PI);
-context.stroke();
+//var img = new Image();
+//img.setAttribute("src","Mama.jpeg");
+//context.beginPath();
+//context.arc(100,75,50,0,2*Math.PI);
+//context.stroke();
 
 let timerStarted = false;
 function Countdown(time){
@@ -35,7 +34,7 @@ function Countdown(time){
         }
     },1000);
 }
-Countdown(20);
+Countdown(1);
 
 function Setscore(value){
     document.getElementById("Score").innerText = value;
@@ -74,37 +73,47 @@ function DrawGlyphscore(BaseScore,Completion,TimeBonus){
     context.lineTo(canvasWidht-200,height-45); 
     context.stroke();
 
-    
-    context.fillText("Glyphscore",canvasWidht, height -10);
-    context.fillText("Round 1/2",canvasWidht, height+10);
-    
+    context.font = "bold 40px Typofont"; 
+    context.fillText("Glyphscore",canvasWidht, height);
+    context.font = "20px Courier New";
+    context.fillText("Round 1/2",canvasWidht, height+40);
+    context.font = " normal 20px Courier New";
     context.textAlign = "left"
-    context.fillText("Basescore:",canvasWidht -80,100);
-    context.fillText("Completion:",canvasWidht -80,120);
-    context.fillText("Time Bonus:",canvasWidht -80,140);
-    context.fillText("Total:",canvasWidht -80,160);
-
-
+    context.fillText("Basescore:",canvasWidht -180,140);
+    context.fillText("Completion:",canvasWidht -180,180);
+    context.fillText("Time Bonus:",canvasWidht -180,220);
     context.textAlign = "right";
-    context.fillText("U+"+BaseScore,canvasWidht +80,100);
-    context.fillText("x"+Completion,canvasWidht +80,120);
-    context.fillText("x"+TimeBonus,canvasWidht +80,140);
+    context.fillText("U+"+BaseScore,canvasWidht +180,140);
+    context.fillText("x"+Completion,canvasWidht +180,180);
+    context.fillText("x"+TimeBonus,canvasWidht +180,220);
+    context.font = "bold 20px Courier New"
+    context.fillText("Total:",canvasWidht -105,310);
+    
+
+    
     context.setLineDash ([5]);
     context.lineWidth = 1;
     context.beginPath();
-    context.moveTo(canvasWidht -80,150);
-    context.lineTo(canvasWidht +80,150);
+    context.moveTo(canvasWidht -185,260);
+    context.lineTo(canvasWidht +185,260);
     context.stroke()
-    context.fillText(BaseScore * Completion +TimeBonus,canvasWidht +80,160);
+    context.fillText(BaseScore * Completion *TimeBonus,canvasWidht +180,310);
     
 
 }
 
-
-//var slider = document.getElementById("myRange");
-//var output = document.getElementById("demo");
-//output.innerHTML = slider.value;
-
-//slider.oninput = function() {
-//  output.innerHTML = this.value;
-//}
+function imageTransform(x, y) {
+    document.getElementById("myDIV").style.transform = "scale(${x}, ${y})";
+  }
+  // Create WebSocket connection.
+  const socket = new WebSocket('ws://localhost:4000');
+  socket.onmessage = function(e) {
+    const object = JSON.parse(e.data);
+    // hier kannst du die daten benutzen
+    console.log(object.axes[0]);
+};
+  
+  // Listen for messages (Welche Message muss da rein?)
+  socket.addEventListener('message', function (event) {
+      document.getElementById("myDIV").style.transform = "scale(${x}, ${y})";
+  });
